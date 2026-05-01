@@ -27,7 +27,7 @@ jobs:
 
       - name: Add upstream remote
         run: |
-          git remote add upstream https://github.com/DevilXD/TwitchDropsMiner.git
+          git remote add upstream https://github.com/fireph/TwitchDropsMiner.git
           git fetch upstream
 
       - name: Check for changes
