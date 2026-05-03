@@ -33,8 +33,8 @@ jobs:
       - name: Check for changes
         id: check-changes
         run: |
-          # Check if there are any new commits in upstream/master
-          BEHIND=$(git rev-list --count HEAD..upstream/master)
+          # Check if there are any new commits in upstream/webui
+          BEHIND=$(git rev-list --count HEAD..upstream/webui)
           echo "behind=$BEHIND" >> $GITHUB_OUTPUT
           echo "Commits behind upstream: $BEHIND"
 
@@ -42,7 +42,7 @@ jobs:
         if: steps.check-changes.outputs.behind > 0
         run: |
           echo "Merging ${{ steps.check-changes.outputs.behind }} new commits from upstream"
-          git merge upstream/master --no-edit
+          git merge upstream/webui --no-edit
 
       - name: Push changes
         if: steps.check-changes.outputs.behind > 0
