@@ -187,4 +187,7 @@ class GeneralSection:
             PriorityMode.LOW_AVBL_FIRST: _(
                 "gui", "settings", "priority_modes", "low_availability"
             ),
+            PriorityMode.PRIORITY_FIRST: _(
+                "gui", "settings", "priority_modes", "priority_first"
+            ),
         }
