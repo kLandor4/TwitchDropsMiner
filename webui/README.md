@@ -14,45 +14,38 @@ When you start the WebUI:
 
 ## Installation
 
-The WebUI requires NiceGUI to be installed:
+The WebUI requires the NiceGUI dependencies:
 
 ```bash
-pip install nicegui
+pip install -r requirements-nicegui.txt
 ```
 
 ## Usage
 
 ### Starting the WebUI
 
-Run the application using `entrypoint.py` with the `UI_BACKEND` environment variable set to `nicegui`:
+Run the dedicated WebUI entry point:
 
 ```bash
-# Linux/Mac
-UI_BACKEND=nicegui python entrypoint.py
-
-# Windows
-set UI_BACKEND=nicegui
-python entrypoint.py
+python main_webui.py
 ```
+
+See `python main_webui.py --help` for available command-line options (e.g. `--stdlog`, `-v`).
 
 ### Accessing the Interface
 
 Once started, open your web browser and navigate to:
-- **Default**: `http://localhost:8080`
-- **Custom**: Depends on your `webui_host` and `webui_port` settings
+- **Default**: `http://localhost:5800`
+- **Custom**: Set via command-line arguments or by adding `webui_host`/`webui_port` to `config/settings.json`
 
-The WebUI is accessible from any device on your network. Use your machine's IP address to access remotely (e.g., `http://192.168.1.100:8080`).
+The WebUI is accessible from any device on your network. Use your machine's IP address to access remotely (e.g., `http://192.168.1.100:5800`).
 
 ### Using tkinter Instead
 
-To use the traditional desktop GUI instead, either omit the environment variable or set it to `tkinter`:
+To use the traditional desktop GUI, run the original entry point:
 
 ```bash
-# Uses tkinter (default behavior)
-python entrypoint.py
-
-# Or explicitly
-UI_BACKEND=tkinter python entrypoint.py
+python main.py
 ```
 
 ## Configuration
@@ -63,9 +56,9 @@ WebUI settings are stored in your standard Twitch Drops Miner settings file (`se
   - `0.0.0.0` - Listen on all interfaces (accessible from other devices)
   - `127.0.0.1` or `localhost` - Local access only
   
-- **webui_port**: Port to serve on (default: `8080`)
+- **webui_port**: Port to serve on (default: `5800`)
 
-You can modify these settings in the WebUI's Settings tab or by editing `settings.json` directly.
+These keys are not present in the settings file by default. You can add them manually if you need to override the defaults. They cannot be changed through the WebUI Settings tab.
 
 ## Features
 
@@ -107,7 +100,7 @@ pip install nicegui
 
 **Port already in use**
 - Change `webui_port` to a different value (e.g., `8081` or `9000`)
-- Find what's using the port: `lsof -i :8080` (Linux/Mac) or `netstat -ano | findstr :8080` (Windows)
+- Find what's using the port: `lsof -i :5800` (Linux/Mac) or `netstat -ano | findstr :5800` (Windows)
 
 ## Technical Note
 
