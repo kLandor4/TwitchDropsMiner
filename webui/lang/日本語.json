@@ -1,0 +1,47 @@
+{
+    "webui": {
+        "settings": {
+            "advanced": {
+                "priority_link_override": "優先リストから未リンクのゲームを挖掘: "
+            },
+            "general": {
+                "language": "言語: ",
+                "invalid_proxy": "無効なプロキシURL"
+            }
+        },
+        "help": {
+            "about": "概要",
+            "created_by": "アプリケーション作成者:",
+            "repository": "リポジトリ:",
+            "version": "バージョン:",
+            "donate": "寄付:",
+            "donate_text": "アプリを気に入っていただけた場合は、DevilXDを支援するための寄付をご検討ください！"
+        },
+        "auth": {
+            "create_account": "管理者アカウントを作成",
+            "username": "ユーザー名",
+            "password": "パスワード",
+            "confirm_password": "パスワードの確認",
+            "username_required": "ユーザー名が必要です",
+            "password_required": "パスワードが必要です",
+            "password_mismatch": "パスワードが一致しません",
+            "register": "登録",
+            "sign_in": "ログイン"
+        },
+        "login": {
+            "logout": "ログアウト"
+        },
+        "inventory": {
+            "no_campaigns": "現在のフィルターに一致するキャンペーンはありません。"
+        },
+        "game_list": {
+            "no_campaigns": "\"{name}\"にはアクティブなドロップキャンペーンがありません。",
+            "add_anyway": "それでも追加しますか？",
+            "cancel": "キャンセル",
+            "add": "追加"
+        },
+        "status": {
+            "name": "ステータス:"
+        }
+    }
+}

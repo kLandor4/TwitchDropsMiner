@@ -8,6 +8,7 @@ on language switch.
 
 from __future__ import annotations
 
+import copy
 import json
 from typing import Any
 
@@ -72,6 +73,13 @@ def _deep_merge_into(dst: dict[str, Any], src: dict[str, Any]) -> None:
             dst[k] = v
 
 
+def _deep_merge(dst: dict[str, Any], src: dict[str, Any]) -> dict[str, Any]:
+    """Non-destructive deep merge; *src* wins. Returns a new dict."""
+    result = copy.deepcopy(dst)
+    _deep_merge_into(result, src)
+    return result
+
+
 # In dev mode, write the English template so translators can copy it.
 if not IS_PACKAGED:
     _WEBUI_LANG_DIR.mkdir(parents=True, exist_ok=True)
@@ -91,7 +99,12 @@ def _set_language(self: Any, language: str) -> None:
     _lang_path = _WEBUI_LANG_DIR / f"{language}.json"
     if _lang_path.exists():
         with _lang_path.open(encoding="utf-8") as _f:
-            _deep_merge_into(self._translation, json.load(_f))  # type: ignore[arg-type]
+            # Non-destructive merge: json_load's merge_json copies references from
+            # default_translation into self._translation, so an in-place merge
+            # would corrupt default_translation. _deep_merge returns a new dict.
+            self._translation = _deep_merge(  # type: ignore[assignment, arg-type]
+                self._translation, json.load(_f)
+            )
 
 
 setattr(_translate.Translator, "set_language", _set_language)

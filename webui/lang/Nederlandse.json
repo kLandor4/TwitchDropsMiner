@@ -1,0 +1,47 @@
+{
+    "webui": {
+        "settings": {
+            "advanced": {
+                "priority_link_override": "Min niet-gekoppelde games uit de prioriteitenlijst: "
+            },
+            "general": {
+                "language": "Taal: ",
+                "invalid_proxy": "Ongeldige proxy-URL"
+            }
+        },
+        "help": {
+            "about": "Over",
+            "created_by": "Applicatie gemaakt door:",
+            "repository": "Repository:",
+            "version": "Versie:",
+            "donate": "Doneer:",
+            "donate_text": "Als je de applicatie leuk vindt en nuttig vond, overweeg dan om te doneren aan DevilXD om hen te steunen!"
+        },
+        "auth": {
+            "create_account": "Maak een admin-account aan",
+            "username": "Gebruikersnaam",
+            "password": "Wachtwoord",
+            "confirm_password": "Bevestig wachtwoord",
+            "username_required": "Gebruikersnaam vereist",
+            "password_required": "Wachtwoord vereist",
+            "password_mismatch": "Wachtwoorden komen niet overeen",
+            "register": "Registreren",
+            "sign_in": "Aanmelden"
+        },
+        "login": {
+            "logout": "Afmelden"
+        },
+        "inventory": {
+            "no_campaigns": "Geen campagnes voldoen aan de huidige filters."
+        },
+        "game_list": {
+            "no_campaigns": "\"{name}\" heeft geen actieve drop-campagnes.",
+            "add_anyway": "Toch toevoegen?",
+            "cancel": "Annuleren",
+            "add": "Toevoegen"
+        },
+        "status": {
+            "name": "Status:"
+        }
+    }
+}

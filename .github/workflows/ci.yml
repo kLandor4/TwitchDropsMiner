@@ -28,7 +28,7 @@ jobs:
       - name: Validate language files
         run: |
           failed=()
-          for file in "lang/"*.json; do
+          for file in "lang/"*.json "webui/lang/"*.json; do
             if err="$(python -m json.tool "${file}" 2>&1 >/dev/null)"; then
               echo "[OK] ${file}"
             else
@@ -44,8 +44,6 @@ jobs:
   test:
     name: Test
     runs-on: ubuntu-latest
-    needs:
-      - validate
 
     steps:
       - name: Checkout code
@@ -57,11 +55,8 @@ jobs:
           python-version: ${{env.PYTHON_VERSION}}
           enable-cache: true
 
-      - name: Install dependencies
-        run: uv sync --group nicegui --group test
-
       - name: Run tests
-        run: uv run pytest tests/ -x
+        run: uv run --group nicegui --group test pytest tests/ -x
 
   windows:
     if: false
@@ -339,6 +334,7 @@ jobs:
             runner: ubuntu-24.04-arm
     runs-on: ${{matrix.runner}}
     needs:
+      - validate
       - test
 
     steps:
@@ -391,6 +387,7 @@ jobs:
             runner: ubuntu-24.04-arm
     runs-on: ${{matrix.runner}}
     needs:
+      - validate
       - test
 
     steps:

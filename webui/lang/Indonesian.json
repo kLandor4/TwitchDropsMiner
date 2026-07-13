@@ -1,0 +1,47 @@
+{
+    "webui": {
+        "settings": {
+            "advanced": {
+                "priority_link_override": "Tambang game tidak tertaut dari Daftar Prioritas: "
+            },
+            "general": {
+                "language": "Bahasa: ",
+                "invalid_proxy": "URL proxy tidak valid"
+            }
+        },
+        "help": {
+            "about": "Tentang",
+            "created_by": "Aplikasi dibuat oleh:",
+            "repository": "Repositori:",
+            "version": "Versi:",
+            "donate": "Donasi:",
+            "donate_text": "Jika Anda menyukai aplikasi dan merasa terbantu, silakan pertimbangkan untuk berdonasi kepada DevilXD untuk mendukung mereka!"
+        },
+        "auth": {
+            "create_account": "Buat akun admin",
+            "username": "Nama pengguna",
+            "password": "Kata sandi",
+            "confirm_password": "Konfirmasi kata sandi",
+            "username_required": "Nama pengguna diperlukan",
+            "password_required": "Kata sandi diperlukan",
+            "password_mismatch": "Kata sandi tidak cocok",
+            "register": "Daftar",
+            "sign_in": "Masuk"
+        },
+        "login": {
+            "logout": "Keluar"
+        },
+        "inventory": {
+            "no_campaigns": "Tidak ada kampanye yang cocok dengan filter saat ini."
+        },
+        "game_list": {
+            "no_campaigns": "\"{name}\" tidak memiliki kampanye drop aktif.",
+            "add_anyway": "Tetap tambahkan?",
+            "cancel": "Batal",
+            "add": "Tambah"
+        },
+        "status": {
+            "name": "Status:"
+        }
+    }
+}

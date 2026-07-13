@@ -1,0 +1,47 @@
+{
+    "webui": {
+        "settings": {
+            "advanced": {
+                "priority_link_override": "Bağlanmamış oyunları Öncelik Listesinden kaz: "
+            },
+            "general": {
+                "language": "Dil: ",
+                "invalid_proxy": "Geçersiz proxy URL'si"
+            }
+        },
+        "help": {
+            "about": "Hakkında",
+            "created_by": "Uygulama oluşturan:",
+            "repository": "Depo:",
+            "version": "Sürüm:",
+            "donate": "Bağış yap:",
+            "donate_text": "Uygulamayı beğendiyseniz ve yararlı bulduysanız, kendilerini desteklemek için DevilXD'ye bağış yapmayı düşünebilirsiniz!"
+        },
+        "auth": {
+            "create_account": "Yönetici hesabı oluştur",
+            "username": "Kullanıcı adı",
+            "password": "Şifre",
+            "confirm_password": "Şifreyi onayla",
+            "username_required": "Kullanıcı adı gerekli",
+            "password_required": "Şifre gerekli",
+            "password_mismatch": "Şifreler eşleşmiyor",
+            "register": "Kayıt ol",
+            "sign_in": "Giriş yap"
+        },
+        "login": {
+            "logout": "Çıkış yap"
+        },
+        "inventory": {
+            "no_campaigns": "Mevcut filtrelerle eşleşen kampanya yok."
+        },
+        "game_list": {
+            "no_campaigns": "\"{name}\" adlı oyunun aktif drop kampanyası yok.",
+            "add_anyway": "Yine de eklensin mi?",
+            "cancel": "İptal",
+            "add": "Ekle"
+        },
+        "status": {
+            "name": "Durum:"
+        }
+    }
+}

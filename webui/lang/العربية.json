@@ -1,0 +1,47 @@
+{
+    "webui": {
+        "settings": {
+            "advanced": {
+                "priority_link_override": "تعدين الألعاب غير المرتبطة من قائمة الأولوية: "
+            },
+            "general": {
+                "language": "اللغة: ",
+                "invalid_proxy": "عنوان proxy غير صالح"
+            }
+        },
+        "help": {
+            "about": "حول",
+            "created_by": "تم إنشاء التطبيق بواسطة:",
+            "repository": "المستودع:",
+            "version": "الإصدار:",
+            "donate": "تبرّع:",
+            "donate_text": "إذا أعجبك التطبيق ووجدته مفيدًا، يرجى النظر في التبرع لـ DevilXD لدعمهم!"
+        },
+        "auth": {
+            "create_account": "إنشاء حساب المشرف",
+            "username": "اسم المستخدم",
+            "password": "كلمة المرور",
+            "confirm_password": "تأكيد كلمة المرور",
+            "username_required": "اسم المستخدم مطلوب",
+            "password_required": "كلمة المرور مطلوبة",
+            "password_mismatch": "كلمتا المرور غير متطابقتين",
+            "register": "تسجيل",
+            "sign_in": "تسجيل الدخول"
+        },
+        "login": {
+            "logout": "تسجيل الخروج"
+        },
+        "inventory": {
+            "no_campaigns": "لا توجد حملات تطابق المرشحات الحالية."
+        },
+        "game_list": {
+            "no_campaigns": "ليس لدى \"{name}\" أي حملات drops نشطة.",
+            "add_anyway": "إضافة على أي حال؟",
+            "cancel": "إلغاء",
+            "add": "إضافة"
+        },
+        "status": {
+            "name": "الحالة:"
+        }
+    }
+}

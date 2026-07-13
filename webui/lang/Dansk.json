@@ -1,0 +1,47 @@
+{
+    "webui": {
+        "settings": {
+            "advanced": {
+                "priority_link_override": "Min udekkede spil fra prioriteringslisten: "
+            },
+            "general": {
+                "language": "Sprog: ",
+                "invalid_proxy": "Ugyldig proxy-URL"
+            }
+        },
+        "help": {
+            "about": "Om",
+            "created_by": "Applikation skabt af:",
+            "repository": "Repository:",
+            "version": "Version:",
+            "donate": "Donér:",
+            "donate_text": "Hvis du kan lide applikationen og fandt den nyttig, så overvej at donere til DevilXD for at støtte dem!"
+        },
+        "auth": {
+            "create_account": "Opret en admin-konto",
+            "username": "Brugernavn",
+            "password": "Adgangskode",
+            "confirm_password": "Bekræft adgangskode",
+            "username_required": "Brugernavn påkrævet",
+            "password_required": "Adgangskode påkrævet",
+            "password_mismatch": "Adgangskoder matcher ikke",
+            "register": "Registrér",
+            "sign_in": "Log ind"
+        },
+        "login": {
+            "logout": "Log ud"
+        },
+        "inventory": {
+            "no_campaigns": "Ingen kampagner matcher de nuværende filtre."
+        },
+        "game_list": {
+            "no_campaigns": "\"{name}\" har ingen aktive drop-kampagner.",
+            "add_anyway": "Tilføj alligevel?",
+            "cancel": "Annullér",
+            "add": "Tilføj"
+        },
+        "status": {
+            "name": "Status:"
+        }
+    }
+}

@@ -1,0 +1,47 @@
+{
+    "webui": {
+        "settings": {
+            "advanced": {
+                "priority_link_override": "Minerar jogos não vinculados da Lista de Prioridade: "
+            },
+            "general": {
+                "language": "Idioma: ",
+                "invalid_proxy": "URL de proxy inválida"
+            }
+        },
+        "help": {
+            "about": "Sobre",
+            "created_by": "Aplicação criada por:",
+            "repository": "Repositório:",
+            "version": "Versão:",
+            "donate": "Doar:",
+            "donate_text": "Se você gosta da aplicação e a achou útil, por favor considere fazer uma doação ao DevilXD para apoiá-lo!"
+        },
+        "auth": {
+            "create_account": "Criar uma conta de administrador",
+            "username": "Utilizador",
+            "password": "Senha",
+            "confirm_password": "Confirmar senha",
+            "username_required": "Utilizador obrigatório",
+            "password_required": "Senha obrigatória",
+            "password_mismatch": "As senhas não coincidem",
+            "register": "Registar",
+            "sign_in": "Entrar"
+        },
+        "login": {
+            "logout": "Sair"
+        },
+        "inventory": {
+            "no_campaigns": "Nenhuma campanha corresponde aos filtros atuais."
+        },
+        "game_list": {
+            "no_campaigns": "\"{name}\" não tem campanhas de drops ativas.",
+            "add_anyway": "Adicionar mesmo assim?",
+            "cancel": "Cancelar",
+            "add": "Adicionar"
+        },
+        "status": {
+            "name": "Estado:"
+        }
+    }
+}

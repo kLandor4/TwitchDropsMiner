@@ -1,0 +1,47 @@
+{
+    "webui": {
+        "settings": {
+            "advanced": {
+                "priority_link_override": "Těžit nepropojené hry ze seznamu priorit: "
+            },
+            "general": {
+                "language": "Jazyk: ",
+                "invalid_proxy": "Neplatná URL proxy"
+            }
+        },
+        "help": {
+            "about": "O aplikaci",
+            "created_by": "Aplikaci vytvořil:",
+            "repository": "Repozitář:",
+            "version": "Verze:",
+            "donate": "Darovat:",
+            "donate_text": "Pokud se vám aplikace líbí a považujete ji za užitečnou, zvažte prosím darování DevilXD na podporu!"
+        },
+        "auth": {
+            "create_account": "Vytvořit účet správce",
+            "username": "Uživatelské jméno",
+            "password": "Heslo",
+            "confirm_password": "Potvrdit heslo",
+            "username_required": "Uživatelské jméno vyžadováno",
+            "password_required": "Heslo vyžadováno",
+            "password_mismatch": "Hesla se neshodují",
+            "register": "Registrovat",
+            "sign_in": "Přihlásit se"
+        },
+        "login": {
+            "logout": "Odhlásit se"
+        },
+        "inventory": {
+            "no_campaigns": "Žádné kampaně neodpovídají aktuálním filtrům."
+        },
+        "game_list": {
+            "no_campaigns": "\"{name}\" nemá žádné aktivní drop kampaně.",
+            "add_anyway": "Přesto přidat?",
+            "cancel": "Zrušit",
+            "add": "Přidat"
+        },
+        "status": {
+            "name": "Stav:"
+        }
+    }
+}

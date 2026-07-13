@@ -1,0 +1,47 @@
+{
+    "webui": {
+        "settings": {
+            "advanced": {
+                "priority_link_override": "Min ulenkede spill fra prioritetslisten: "
+            },
+            "general": {
+                "language": "Språk: ",
+                "invalid_proxy": "Ugyldig proxy-URL"
+            }
+        },
+        "help": {
+            "about": "Om",
+            "created_by": "Applikasjon laget av:",
+            "repository": "Repository:",
+            "version": "Versjon:",
+            "donate": "Donér:",
+            "donate_text": "Hvis du liker applikasjonen og synes den er nyttig, vennligst vurder å donere til DevilXD for å støtte dem!"
+        },
+        "auth": {
+            "create_account": "Opprett en admin-konto",
+            "username": "Brukernavn",
+            "password": "Passord",
+            "confirm_password": "Bekreft passord",
+            "username_required": "Brukernavn påkrevd",
+            "password_required": "Passord påkrevd",
+            "password_mismatch": "Passordene stemmer ikke",
+            "register": "Registrér",
+            "sign_in": "Logg inn"
+        },
+        "login": {
+            "logout": "Logg ut"
+        },
+        "inventory": {
+            "no_campaigns": "Ingen kampanjer samsvarer med de nåværende filtrene."
+        },
+        "game_list": {
+            "no_campaigns": "\"{name}\" har ingen aktive drop-kampanjer.",
+            "add_anyway": "Legge til likevel?",
+            "cancel": "Avbryt",
+            "add": "Legg til"
+        },
+        "status": {
+            "name": "Status:"
+        }
+    }
+}

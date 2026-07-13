@@ -1,0 +1,47 @@
+{
+    "webui": {
+        "settings": {
+            "advanced": {
+                "priority_link_override": "Nem kapcsolódó játékok bányászása a prioritási listából: "
+            },
+            "general": {
+                "language": "Nyelv: ",
+                "invalid_proxy": "Érvénytelen proxy URL"
+            }
+        },
+        "help": {
+            "about": "Névjegy",
+            "created_by": "Az alkalmazást készítette:",
+            "repository": "Tároló:",
+            "version": "Verzió:",
+            "donate": "Adomány:",
+            "donate_text": "Ha tetszik az alkalmazás és hasznosnak találod, kérjük fontold meg a DevilXD támogatását adománnyal!"
+        },
+        "auth": {
+            "create_account": "Rendszergazdai fiók létrehozása",
+            "username": "Felhasználónév",
+            "password": "Jelszó",
+            "confirm_password": "Jelszó megerősítése",
+            "username_required": "Felhasználónév szükséges",
+            "password_required": "Jelszó szükséges",
+            "password_mismatch": "A jelszavak nem egyeznek",
+            "register": "Regisztráció",
+            "sign_in": "Bejelentkezés"
+        },
+        "login": {
+            "logout": "Kijelentkezés"
+        },
+        "inventory": {
+            "no_campaigns": "Nincs olyan kampány, amely megfelelne a jelenlegi szűrőknek."
+        },
+        "game_list": {
+            "no_campaigns": "\"{name}\" nevű játéknak nincs aktív drop kampánya.",
+            "add_anyway": "Mindenképp hozzáadod?",
+            "cancel": "Mégse",
+            "add": "Hozzáadás"
+        },
+        "status": {
+            "name": "Státusz:"
+        }
+    }
+}

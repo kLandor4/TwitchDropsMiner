@@ -1,0 +1,47 @@
+{
+    "webui": {
+        "settings": {
+            "advanced": {
+                "priority_link_override": "Minează jocurile neconectate din Lista de prioritate: "
+            },
+            "general": {
+                "language": "Limbă: ",
+                "invalid_proxy": "URL proxy nevalid"
+            }
+        },
+        "help": {
+            "about": "Despre",
+            "created_by": "Aplicație creată de:",
+            "repository": "Depozit:",
+            "version": "Versiune:",
+            "donate": "Donează:",
+            "donate_text": "Dacă îți place aplicația și o găsești utilă, te rugăm să iei în considerare o donație către DevilXD pentru a-i susține!"
+        },
+        "auth": {
+            "create_account": "Creează un cont de administrator",
+            "username": "Nume utilizator",
+            "password": "Parolă",
+            "confirm_password": "Confirmă parola",
+            "username_required": "Nume de utilizator obligatoriu",
+            "password_required": "Parolă obligatorie",
+            "password_mismatch": "Parolele nu se potrivesc",
+            "register": "Înregistrează-te",
+            "sign_in": "Conectare"
+        },
+        "login": {
+            "logout": "Deconectare"
+        },
+        "inventory": {
+            "no_campaigns": "Nicio campanie nu corespunde filtrelor curente."
+        },
+        "game_list": {
+            "no_campaigns": "\"{name}\" nu are campanii de drop active.",
+            "add_anyway": "Adaugi oricum?",
+            "cancel": "Anulează",
+            "add": "Adaugă"
+        },
+        "status": {
+            "name": "Stare:"
+        }
+    }
+}
