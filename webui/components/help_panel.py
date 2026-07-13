@@ -18,9 +18,9 @@ class HelpPanel(BasePanel):
             with ui.column().classes("gap-2 w-full max-w-[1000px]"):
                 # About
                 with ui.card().props("flat bordered").classes("w-full q-pa-sm"):
-                    ui.label("About").classes("font-bold text-sm")
+                    ui.label(_("webui", "help", "about")).classes("font-bold text-sm")
                     with ui.grid(columns="auto 1fr").classes("gap-x-4 gap-y-1 text-sm"):
-                        ui.label("Application created by:").classes("text-right")
+                        ui.label(_("webui", "help", "created_by")).classes("text-right")
                         with ui.row().classes("gap-0"):
                             ui.link(
                                 "DevilXD", "https://github.com/DevilXD", True
@@ -29,14 +29,14 @@ class HelpPanel(BasePanel):
                                 "/fireph", "https://github.com/fireph", True
                             ).classes("text-sm")
 
-                        ui.label("Repository:").classes("text-right")
+                        ui.label(_("webui", "help", "repository")).classes("text-right")
                         ui.link(
                             REPOSITORY_URL,
                             REPOSITORY_URL,
                             True,
                         ).classes("text-sm")
 
-                        ui.label("Version:").classes("text-right")
+                        ui.label(_("webui", "help", "version")).classes("text-right")
                         ui.link(
                             f"v{__version__}",
                             f"{REPOSITORY_URL}/releases/tag/{__version__}",
@@ -46,10 +46,9 @@ class HelpPanel(BasePanel):
                     ui.separator().classes("my-1")
 
                     with ui.grid(columns="auto 1fr").classes("gap-x-4 text-sm"):
-                        ui.label("Donate:").classes("text-right")
+                        ui.label(_("webui", "help", "donate")).classes("text-right")
                         ui.link(
-                            "If you like the application and found it useful, "
-                            "please consider donating to DevilXD to support them!",
+                            _("webui", "help", "donate_text"),
                             "https://www.buymeacoffee.com/DevilXD",
                             True,
                         ).classes("text-sm")

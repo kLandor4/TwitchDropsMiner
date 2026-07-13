@@ -39,7 +39,7 @@ class MainPanel(BasePanel):
                 ):
                     with ui.card().props("flat bordered").classes("w-full"):
                         with ui.row().classes("items-center gap-2 w-full"):
-                            ui.label(_("gui", "status", "name") + ":").classes(
+                            ui.label(_("webui", "status", "name")).classes(
                                 "font-bold text-sm"
                             )
                             ui.label().classes("text-sm flex-1").bind_text_from(

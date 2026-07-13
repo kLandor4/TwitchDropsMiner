@@ -60,6 +60,10 @@ to_add: list[tuple[Path, str, bool]] = [
 for lang_filepath in WORKING_DIR.joinpath("lang").glob("*.json"):
     if lang_filepath.stem != DEFAULT_LANG:
         to_add.append((lang_filepath, "lang", True))
+if UI_BACKEND == "nicegui":
+    for lang_filepath in WORKING_DIR.joinpath("webui/lang").glob("*.json"):
+        if lang_filepath.stem != DEFAULT_LANG:
+            to_add.append((lang_filepath, "webui/lang", True))
 
 # Ensure the required to-be-added data exists
 datas: list[tuple[Path, str]] = []

@@ -132,7 +132,7 @@ class InventoryPanel(BasePanel):
 
         with ui.column().classes("w-full gap-2"):
             if not campaigns:
-                ui.label("No campaigns match the current filters.").classes(
+                ui.label(_("webui", "inventory", "no_campaigns")).classes(
                     "text-sm text-gray-500 p-4"
                 )
                 return
@@ -255,9 +255,9 @@ class InventoryPanel(BasePanel):
             "gui",
             "inventory",
             "status",
-            "linked" if campaign.eligible else "not_linked",
+            "linked" if campaign.linked else "not_linked",
         )
-        link_cls = "text-green-500" if campaign.eligible else "text-red-500"
+        link_cls = "text-green-500" if campaign.linked else "text-red-500"
 
         # Allowed channels
         acl = campaign.allowed_channels

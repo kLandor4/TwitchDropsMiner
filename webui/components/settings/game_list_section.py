@@ -136,10 +136,10 @@ class GameListSection(ABC):
 
     def _confirm_unknown_game(self, name: str, on_confirm) -> None:
         with ui.dialog() as dialog, ui.card().classes("q-pa-sm"):
-            ui.label(f'"{name}" has no active drop campaigns.').classes(
+            ui.label(_("webui", "game_list", "no_campaigns").format(name=name)).classes(
                 "text-sm font-bold"
             )
-            ui.label("Add it anyway?").classes("text-xs")
+            ui.label(_("webui", "game_list", "add_anyway")).classes("text-xs")
             with ui.row().classes("gap-2 justify-end w-full"):
 
                 def _cancel():
@@ -151,8 +151,10 @@ class GameListSection(ABC):
                     dialog.delete()
                     on_confirm()
 
-                ui.button("Cancel", on_click=_cancel).props("dense flat").classes(
-                    "text-xs"
-                )
-                ui.button("Add", on_click=_confirm).props("dense").classes("text-xs")
+                ui.button(_("webui", "game_list", "cancel"), on_click=_cancel).props(
+                    "dense flat"
+                ).classes("text-xs")
+                ui.button(_("webui", "game_list", "add"), on_click=_confirm).props(
+                    "dense"
+                ).classes("text-xs")
         dialog.open()

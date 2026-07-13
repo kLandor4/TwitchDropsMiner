@@ -14,6 +14,7 @@ from slowapi.errors import RateLimitExceeded
 from slowapi.util import get_remote_address
 
 from constants import CONFIG_PATH
+from translate import _
 
 
 class AuthManager:
@@ -173,16 +174,22 @@ class AuthManager:
                     "text-h5 text-center w-full mb-2"
                 )
                 if first_run:
-                    ui.label("Create an admin account").classes(
+                    ui.label(_("webui", "auth", "create_account")).classes(
                         "text-center w-full text-grey mb-2"
                     )
-                username_input = ui.input("Username").classes("w-full")
+                username_input = ui.input(_("webui", "auth", "username")).classes(
+                    "w-full"
+                )
                 password_input = ui.input(
-                    "Password", password=True, password_toggle_button=True
+                    _("webui", "auth", "password"),
+                    password=True,
+                    password_toggle_button=True,
                 ).classes("w-full")
                 confirm_input = (
                     ui.input(
-                        "Confirm password", password=True, password_toggle_button=True
+                        _("webui", "auth", "confirm_password"),
+                        password=True,
+                        password_toggle_button=True,
                     ).classes("w-full")
                     if first_run
                     else None
@@ -194,15 +201,26 @@ class AuthManager:
                         password_input.value,
                     )
                     if not username:
-                        return ui.notify("Username Required", type="negative")
+                        return ui.notify(
+                            _("webui", "auth", "username_required"), type="negative"
+                        )
                     if not password:
-                        return ui.notify("Password Required", type="negative")
+                        return ui.notify(
+                            _("webui", "auth", "password_required"), type="negative"
+                        )
                     if first_run and password != confirm_input.value:
-                        return ui.notify("Password Mismatch", type="negative")
+                        return ui.notify(
+                            _("webui", "auth", "password_mismatch"), type="negative"
+                        )
                     ui.run_javascript(AuthManager._auth_js(username, password))
 
                 ui.button(
-                    "Register" if first_run else "Sign in", on_click=on_submit
+                    (
+                        _("webui", "auth", "register")
+                        if first_run
+                        else _("webui", "auth", "sign_in")
+                    ),
+                    on_click=on_submit,
                 ).classes("w-full mt-2")
                 for inp in (username_input, password_input, confirm_input):
                     if inp:
