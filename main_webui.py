@@ -50,9 +50,11 @@ if __name__ == "__main__":
         LOG_PATH,
         LOCK_PATH,
         CONFIG_PATH,
+        State,
     )
     from webui.auth import AuthManager
     from webui.ssl import get_ssl_kwargs
+    from fastapi.responses import JSONResponse
 
     # Apply webui-only monkey-patches before constructing Settings/Twitch.
     import webui.patches  # noqa
@@ -235,6 +237,35 @@ if __name__ == "__main__":
         global twitch_client
         if twitch_client is not None:
             twitch_client.gui.close()
+
+    @app.get("/health")
+    async def healthcheck():
+        """Health endpoint for external monitoring (e.g. Docker HEALTHCHECK).
+
+        200 while the app is running, 503 otherwise. Being logged out is not
+        unhealthy (reported as twitch_state LOGGED_OUT). Once logged in, health
+        requires: the main state machine hasn't exited and no fatal error or
+        shutdown has occurred.
+        """
+        if twitch_client is None:
+            return JSONResponse({"status": "starting"}, status_code=503)
+        healthy = (
+            exit_status == 0
+            and twitch_client.gui.running
+            and twitch_client._state is not State.EXIT
+        )
+        twitch_state = (
+            twitch_client._state.name
+            if twitch_client._auth_state._logged_in.is_set()
+            else "LOGGED_OUT"
+        )
+        return JSONResponse(
+            {
+                "status": "ok" if healthy else "unhealthy",
+                "twitch_state": twitch_state,
+            },
+            status_code=200 if healthy else 503,
+        )
 
     # Start NiceGUI - this blocks until shutdown
     try:
