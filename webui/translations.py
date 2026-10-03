@@ -54,6 +54,7 @@ default_webui_translation: dict[str, Any] = {
             "logout": "Logout",
             "browser_title": "Twitch login",
             "browser_login": "Browser login",
+            "starting_browser": "Starting browser…",
             "show_browser": "Show login browser",
             "close_view": "Close view",
             "cancel_browser": "Cancel login",

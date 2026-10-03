@@ -118,6 +118,8 @@ async def browser_login(
     display: str,
     cancel: asyncio.Event,
     report: Callable[[str], None],
+    *,
+    on_ready: Callable[[], None] | None = None,
 ) -> str:
     try:
         import zendriver as zd
@@ -140,11 +142,14 @@ async def browser_login(
     async def login_in_browser() -> str:
         nonlocal browser
         report(
-            "Starting a private browser. Enter your password and any verification code on Twitch."
+            "Starting a private browser. This can take up to 15 seconds."
         )
         config = zd.Config(
             browser_executable_path=browser_executable(),
             headless=False,
+            # Zendriver's 2.5-second default is too short for a busy NAS.
+            browser_connection_timeout=0.25,
+            browser_connection_max_tries=60,
             browser_args=[
                 f"--display={display}",
                 "--ozone-platform=x11",
@@ -245,6 +250,8 @@ async def browser_login(
             )
         )
         await tab.get(LOGIN_URL)
+        if on_ready is not None:
+            on_ready()
         report(
             "Complete Twitch login in the browser below using your password and verification code."
         )

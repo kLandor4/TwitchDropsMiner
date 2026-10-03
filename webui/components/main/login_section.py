@@ -23,6 +23,7 @@ class LoginSection:
         self._popup_maybe_open: bool = False
         self._browser_view_url = ""
         self._browser_message = ""
+        self._browser_starting = False
         self._browser_dialogs: list[ui.dialog] = []
 
     def update(self, status: str, user_id: int | None) -> None:
@@ -36,12 +37,18 @@ class LoginSection:
                 dialog.close()
 
     def update_browser(
-        self, *, url: str | None = None, message: str | None = None
+        self,
+        *,
+        url: str | None = None,
+        message: str | None = None,
+        starting: bool | None = None,
     ) -> None:
         if url is not None:
             self._browser_view_url = url
         if message is not None:
             self._browser_message = message
+        if starting is not None:
+            self._browser_starting = starting
 
     def build(self) -> None:
         browser_dialog = None
@@ -59,8 +66,15 @@ class LoginSection:
                     ui.label().bind_text_from(self, "_browser_message").classes(
                         "text-sm"
                     )
+                    with ui.column().classes(
+                        "w-full flex-1 items-center justify-center gap-3"
+                    ).bind_visibility_from(self, "_browser_starting"):
+                        ui.spinner(size="lg")
+                        ui.label(_("webui", "login", "starting_browser"))
                     ui.html("", sanitize=False).classes(
                         "w-full flex-1 min-h-0"
+                    ).bind_visibility_from(
+                        self, "_browser_starting", backward=lambda starting: not starting
                     ).bind_content_from(
                         self,
                         "_browser_view_url",
@@ -97,7 +111,9 @@ class LoginSection:
         ):
             ui.label(_("gui", "login", "name")).classes("font-bold text-sm mb-1")
             if self._manager.login.browser_login_enabled:
-                ui.label(_("webui", "login", "browser_login")).classes("text-xs")
+                with ui.row().classes("items-center gap-2"):
+                    ui.spinner(size="sm").bind_visibility_from(self, "_browser_starting")
+                    ui.label(_("webui", "login", "browser_login")).classes("text-xs")
             with ui.row().classes("gap-4 items-start"):
                 ui.label(_("gui", "login", "labels")).classes(
                     "text-xs whitespace-pre leading-relaxed"

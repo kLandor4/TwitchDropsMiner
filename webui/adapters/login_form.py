@@ -81,16 +81,24 @@ class LoginFormAdapter:
             await self._confirm.wait()
             self._browser_cancel.clear()
             self.update(_("gui", "login", "logging_in"), None)
+            self._manager.main_panel.update_browser_login(
+                starting=True, message=_("webui", "login", "starting_browser")
+            )
             try:
                 async with self._browser_display as display:
                     self._manager.main_panel.update_browser_login(url=display.view_url)
                     return await browser_login(
-                        display.display, self._browser_cancel, report
+                        display.display,
+                        self._browser_cancel,
+                        report,
+                        on_ready=lambda: self._manager.main_panel.update_browser_login(
+                            starting=False
+                        ),
                     )
             except (BrowserDisplayError, BrowserLoginError) as exc:
                 report(str(exc))
             finally:
-                self._manager.main_panel.update_browser_login(url="")
+                self._manager.main_panel.update_browser_login(url="", starting=False)
 
     def update(self, status: str, user_id: int | None):
         self._manager.main_panel.update_login(status, user_id)

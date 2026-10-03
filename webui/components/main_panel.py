@@ -70,9 +70,13 @@ class MainPanel(BasePanel):
         self._login_section.update(status, user_id)
 
     def update_browser_login(
-        self, *, url: str | None = None, message: str | None = None
+        self,
+        *,
+        url: str | None = None,
+        message: str | None = None,
+        starting: bool | None = None,
     ) -> None:
-        self._login_section.update_browser(url=url, message=message)
+        self._login_section.update_browser(url=url, message=message, starting=starting)
 
     # -------------------------------------------------------------------------
     # Websocket Section
