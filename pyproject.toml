@@ -19,6 +19,7 @@ nicegui = [
     "pwdlib[argon2]",
     "pyjwt",
     "slowapi",
+    "zendriver==0.17.0",
 ]
 build = [
     "pyinstaller",

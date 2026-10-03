@@ -50,7 +50,14 @@ default_webui_translation: dict[str, Any] = {
             "register": "Register",
             "sign_in": "Sign in",
         },
-        "login": {"logout": "Logout"},
+        "login": {
+            "logout": "Logout",
+            "browser_title": "Twitch login",
+            "browser_login": "Browser login",
+            "show_browser": "Show login browser",
+            "close_view": "Close view",
+            "cancel_browser": "Cancel login",
+        },
         "inventory": {"no_campaigns": "No campaigns match the current filters."},
         "game_list": {
             "no_campaigns": '"{name}" has no active drop campaigns.',

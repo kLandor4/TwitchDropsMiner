@@ -14,7 +14,9 @@ When you start the WebUI:
 
 ## Installation
 
-[uv](https://docs.astral.sh/uv/) manages the Python environment and dependencies:
+[uv](https://docs.astral.sh/uv/) manages the Python environment and dependencies.
+The NiceGUI dependency group includes the Chromium driver. Fresh logins also need
+Chromium, Xvfb, x11vnc, and noVNC on the host; see the browser login setup below.
 
 ## Usage
 
@@ -34,7 +36,9 @@ Once started, open your web browser and navigate to:
 - **Default**: `http://localhost:5800` (or `https://localhost:5800` with `SECURE_CONNECTION=1`)
 - **Custom**: Set via the `WEBUI_HOST`, `WEBUI_PORT`, and `SECURE_CONNECTION` environment variables
 
-The WebUI is accessible from any device on your network. Use your machine's IP address to access remotely (e.g., `http://192.168.1.100:5800`).
+The WebUI listens on localhost by default. For remote access, explicitly set
+`WEBUI_HOST` to a network interface, enable `WEBUI_AUTH=1`, and use HTTPS or a trusted
+TLS reverse proxy. Dashboard clients can control the embedded login browser.
 
 ### Using tkinter Instead
 
@@ -44,11 +48,86 @@ To use the traditional desktop GUI, run the original entry point:
 uv run --group tkinter python main.py
 ```
 
+### Default Chromium/noVNC login (Ubuntu)
+
+WebUI mode opens a real Chromium browser **inside a NiceGUI dialog** by default.
+Sign in on Twitch's page and complete its verification prompts there. The browser
+keeps the web client ID and adds the Android `delegate_client_id` to password-login
+requests. Only a token that Twitch validates as belonging to the Android app is
+returned to the existing miner. Twitch may reject delegation; this is an experiment,
+not a confirmed workaround.
+
+Install the virtual display and viewer, then a Chromium browser:
+
+```bash
+sudo apt-get install xvfb x11vnc novnc
+uvx --from playwright playwright install --with-deps chromium
+```
+
+Start from this checkout:
+
+```bash
+uv run --group nicegui python main_webui.py
+```
+
+Open `http://localhost:5800` and click **Login**. **Close view** hides the dialog
+without cancelling; **Show login browser** reopens the same session. **Cancel login**
+closes the browser and allows another attempt. The attempt expires after ten minutes.
+Passwords and verification codes are entered in Twitch's page. The dashboard reports
+HTTP status/error codes and the token validation result without logging tokens or
+login request bodies. A successful Android token is saved through the miner's normal
+cookie mechanism, and mining resumes automatically.
+
+The embedded browser includes the standard noVNC toolbar. Open it using the handle
+on the left edge, then select **Clipboard** to paste text from your computer. Click
+back into the browser and press **Ctrl+V** to paste it into the selected field. Text
+copied inside the browser also appears in the clipboard panel. The toolbar includes
+fullscreen, scaling settings, and extra keyboard controls.
+
+The browser has a temporary profile, removed when the attempt ends. The virtual
+display and VNC server run only during the attempt. VNC listens on loopback; its
+viewer and WebSocket are served through the existing WebUI port, including HTTPS
+when configured. An unguessable per-attempt key and a same-origin check restrict
+viewer WebSockets. No additional port needs forwarding.
+
+Configuration:
+
+- `WEBUI_TWITCH_LOGIN=android-browser` is the default; no environment variable is needed.
+- `WEBUI_TWITCH_LOGIN=device-code` selects the legacy device-code flow instead.
+- `WEBUI_BROWSER_PATH` selects a Chrome/Chromium executable. Otherwise an installed
+  browser is preferred, followed by the latest Playwright cache and Zendriver's discovery.
+- `PLAYWRIGHT_BROWSERS_PATH` selects a non-default Playwright browser cache.
+- `WEBUI_NOVNC_PATH` overrides `/usr/share/novnc`.
+
+The normal NiceGUI dependency group installs the pinned Zendriver dependency.
+`bash webui/run_android_login.sh` remains a convenience launcher for this flow.
+Existing valid saved logins are restored normally and skip this flow. Do not delete
+working credentials just to test it; use a separate checkout if you need to preserve
+an existing session. To select the legacy login explicitly, run:
+
+```bash
+WEBUI_TWITCH_LOGIN=device-code uv run --group nicegui python main_webui.py
+```
+
+The tkinter entry point uses its original login flow.
+
+For the experiment, use password login rather than a social provider or passkey:
+only `/protected_login` and `/protected_login/shim` are modified. A rejection can mean
+Twitch disallows delegation in this context or that modifying the protected request
+invalidates its integrity checks; it does not establish that all Android login is
+impossible.
+
+If a downloaded Chromium cannot start on Ubuntu with a "No usable sandbox" error,
+use a browser installed at a path covered by Ubuntu's AppArmor policy. This VM's
+Chrome for Testing is installed at `/opt/google/chrome/chrome`, using Ubuntu's
+existing Chrome policy. The experiment keeps Chromium's sandbox enabled.
+
 ## Configuration
 
 The WebUI host, port, and authentication are configured via environment variables:
 
-- **WEBUI_HOST**: Network interface to bind to (default: `0.0.0.0`)
+- **WEBUI_HOST**: Network interface to bind to (default: `127.0.0.1` with browser login;
+  the legacy device-code flow retains `0.0.0.0`)
   - `0.0.0.0` - Listen on all interfaces (accessible from other devices)
   - `127.0.0.1` or `localhost` - Local access only
 
@@ -93,8 +172,7 @@ The WebUI provides all the functionality of the traditional GUI:
 
 ## Security Notes
 
-- By default, the WebUI listens on all interfaces (`0.0.0.0`), making it accessible from other devices
-- Set `WEBUI_HOST=127.0.0.1` for local-only access
+- Browser login defaults to localhost (`127.0.0.1`); set `WEBUI_HOST` explicitly for remote access
 - Consider firewall rules or a reverse proxy if exposing beyond your local network
 
 ### Authentication

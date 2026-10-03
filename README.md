@@ -8,7 +8,7 @@ This application allows you to AFK mine timed Twitch drops, without having to wo
 - **Streamlined settings** - Moved settings into ./config folder
 - **Automated upstream sync** - Workflow to automatically merge updates from the upstream repository
 - **Enhanced error handling** - Improved error messages when settings files can't be loaded
-- **Login URL management** - Login URLs are copied to clipboard (tkinter GUI)
+- **Chromium Login** - Opens twitch.tv login webpage in app
 - **About tab links** - Repository URL updated in about tab
 
 > [!NOTE]
