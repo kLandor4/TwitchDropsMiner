@@ -95,7 +95,7 @@ class AuthManager:
         fetch('/auth/login', {{
             method: 'POST',
             headers: {{'Content-Type': 'application/json'}},
-            body: '{body}'
+            body: {json.dumps(body)}
         }}).then(r => r.ok
             ? location.href = '/'
             : r.json().then(e => Quasar.Notify.create({{type: 'negative', message: e.detail}}))
